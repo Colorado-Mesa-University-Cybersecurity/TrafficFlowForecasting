@@ -15,6 +15,9 @@
 *.csv.pickle
 *.pickle
 
+# Zip files
+*.zip
+
 
 
 # Default python gitignore created by Github:
