@@ -1,0 +1,3 @@
+[submodule "Quick_ML"]
+	path = Quick_ML
+	url = https://github.com/Colorado-Mesa-University-Cybersecurity/Quick_ML.git
