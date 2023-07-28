@@ -142,7 +142,6 @@ def run_deep_nn_experiment(
         fit_choice
     )
 
-    
     print(f'loss: {results[0]}, accuracy: {results[1]*100: .2f}%')
 
     # we add a target_type_ attribute to our model so yellowbrick knows how to make the visualizations
