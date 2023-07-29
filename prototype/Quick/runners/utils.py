@@ -185,7 +185,8 @@ def run_model(
         Function will run the model
     '''
 
-    lr_choice: int = LEARNING_RATE_OPTIONS[lr_choice]
+    if lr_choice != 'None':
+        lr_choice: int = LEARNING_RATE_OPTIONS[lr_choice]
     
 
     with learner.no_bar() if no_bar else contextlib.ExitStack() as gs:
