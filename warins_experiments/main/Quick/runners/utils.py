@@ -190,30 +190,17 @@ def run_model(
 
     with learner.no_bar() if no_bar else contextlib.ExitStack() as gs:
 
-        if lr_choice != 'None':
-            lr = learner.lr_find(suggest_funcs=lr_funcs)
+        lr = learner.lr_find(suggest_funcs=lr_funcs)
 
-                # fitting functions, they give different results, some networks perform better with different learning schedule during fitting
-            if(fit_choice == FIT):
-                learner.fit(epochs, lr[lr_choice])
-            elif(fit_choice == FLAT_COS):
-                learner.fit_flat_cos(epochs, lr[lr_choice])
-            elif(fit_choice == ONE_CYCLE):
-                learner.fit_one_cycle(epochs, lr_max=lr[lr_choice])
-            else:
-                assert False, f'{fit_choice} is not a valid fit_choice'
-
+            # fitting functions, they give different results, some networks perform better with different learning schedule during fitting
+        if(fit_choice == FIT):
+            learner.fit(epochs, lr[lr_choice])
+        elif(fit_choice == FLAT_COS):
+            learner.fit_flat_cos(epochs, lr[lr_choice])
+        elif(fit_choice == ONE_CYCLE):
+            learner.fit_one_cycle(epochs, lr_max=lr[lr_choice])
         else:
-
-            if(fit_choice == FIT):
-                learner.fit(epochs)
-            elif(fit_choice == FLAT_COS):
-                learner.fit_flat_cos(epochs)
-            elif(fit_choice == ONE_CYCLE):
-                learner.fit_one_cycle(epochs)
-            else:
-                assert False, f'{fit_choice} is not a valid fit_choice'
-
+            assert False, f'{fit_choice} is not a valid fit_choice'
 
         learner.recorder.plot_sched() 
         results = learner.validate()
